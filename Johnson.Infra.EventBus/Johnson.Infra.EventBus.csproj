@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="9.0.4" />
+    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="9.0.4" />
+    <PackageReference Include="RabbitMQ.Client" Version="7.1.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Johnson.Infra.DataStorage\Johnson.Infra.DataStorage.csproj" />
+    <ProjectReference Include="..\Johnson.Infra.RegistryCache\Johnson.Infra.RegistryCache.csproj" />
+    <ProjectReference Include="..\Johnson.Monitoring\Johnson.Monitoring.csproj" />
+  </ItemGroup>
+
+</Project>

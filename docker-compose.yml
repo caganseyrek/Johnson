@@ -1,0 +1,43 @@
+services:
+    api-service:
+        container_name: johnson-api-service
+        build:
+            context: .
+            dockerfile: Johnson.API/Dockerfile
+        ports:
+            - "8080:8080"
+            - "8081:8081"
+        networks:
+            - "internal"
+        environment:
+            ASPNETCORE_ENVIRONMENT: Development
+        depends_on:
+            - redis
+            - rabbitmq
+
+    # monitoring:
+    #     build:
+    #         context: ./Johnson.Monitoring.UI
+    #         dockerfile: Dockerfile
+
+    redis:
+        container_name: johnson-redis-service
+        image: redis
+        ports:
+            - "6379:6379"
+
+    rabbitmq:
+        container_name: johnson-rabbitmq-service
+        image: rabbitmq
+        ports:
+            - "5672:5672"
+            - "15672:15672"
+        environment:
+            RABBITMQ_DEFAULT_USER: admin
+            RABBITMQ_DEFAULT_PASS: admin
+        networks:
+          - internal
+
+networks:
+  internal:
+    driver: bridge
